@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function Player() {
-    return (
-        <div>
-            Welcome to spotify
-        </div>
-    )
+function Player(spotify) {
+  return <div>Welcome to spotify</div>;
 }
 
-export default Player
+export default Player;

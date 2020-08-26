@@ -9,7 +9,7 @@ import { useDataLayerValue } from "./DataLayer";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue();
+  const [{ token }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     const hash = getTokenFromResponse();
@@ -29,12 +29,19 @@ function App() {
         });
       });
 
-      spotify.getUserPlaylists().then((playlists)=>{
+      spotify.getUserPlaylists().then((playlists) => {
         dispatch({
           type: "SET_PLAYLISTS",
-          playlists
-        })
-      })
+          playlists,
+        });
+      });
+
+      spotify.getPlaylist("5O0lR7LiAE5kPqw0XEDKRn").then((response) => {
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: response,
+        });
+      });
     }
     // eslint-disable-next-line
   }, []);

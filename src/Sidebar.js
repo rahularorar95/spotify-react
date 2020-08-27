@@ -21,6 +21,9 @@ function Sidebar() {
       <SidebarOption title="Your Library" Icon={LibraryMusicIcon} />
 
       <br />
+      <br />
+      <br />
+      
       <strong className="sidebar__title">PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist) => (

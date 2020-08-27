@@ -30,10 +30,10 @@ const reducer = (state, action) => {
         playlists: action.playlists,
       };
 
-    case "SET_DISCOVER_WEEKLY":
+    case "SET_GLOBAL_50":
         return {
             ...state,
-            discover_weekly: action.discover_weekly
+            global_50: action.global_50
         }
 
     default:

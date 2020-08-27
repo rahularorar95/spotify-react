@@ -25,11 +25,11 @@
 
 .body__infoText {
   flex: 1;
+  margin-bottom: 10px;
 }
 
 .body__infoText > h2 {
   font-size: 56px;
-  margin-bottom: 10px;
 }
 
 .body__infoText > p {
@@ -57,4 +57,9 @@
 
 .body__songs {
   margin: 20px -30px;
+}
+
+.body__background {
+  background-color: #08161f;
+  margin: 0 -30px;
 }

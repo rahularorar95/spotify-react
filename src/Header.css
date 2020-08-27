@@ -4,6 +4,10 @@
   margin-bottom: 30px;
 }
 
+.header__left > input:focus {
+  outline: 0;
+}
+
 .header__left {
   flex: 0.5;
   min-width: 70px;

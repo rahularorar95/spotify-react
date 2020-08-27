@@ -36,10 +36,10 @@ function App() {
         });
       });
 
-      spotify.getPlaylist("5O0lR7LiAE5kPqw0XEDKRn").then((response) => {
+      spotify.getPlaylist("37i9dQZEVXbMDoHDwVN2tF").then((response) => {
         dispatch({
-          type: "SET_DISCOVER_WEEKLY",
-          discover_weekly: response,
+          type: "SET_GLOBAL_50",
+          global_50: response,
         });
       });
     }

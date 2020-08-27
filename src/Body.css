@@ -60,6 +60,6 @@
 }
 
 .body__background {
-  background-color: #08161f;
+  background: linear-gradient(45deg, black, transparent);
   margin: 0 -30px;
 }

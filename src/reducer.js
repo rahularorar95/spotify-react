@@ -1,8 +1,6 @@
 export const initialState = {
   user: null,
-  //just for debuging
-//   token:
-//     "BQBeD0OouAqs-zlq4d9K9OdUbfmalO6lKjleYzKBvFFRDEZ9E9NWs7fdEtFe7zISAwFw9DohNwap1-vG3s--Fvi94qaZEog6tAlGh3YCxhjkIXhK-5w5rywJYDrxCH6ZPz2N3n0TNhe_ndY8Set271KtoqjbFLzRGVdYhg8ADXAbyOxK",
+  token: null,
   playlist: [],
   playing: false,
   item: null,
@@ -31,11 +29,20 @@ const reducer = (state, action) => {
       };
 
     case "SET_GLOBAL_50":
-        return {
-            ...state,
-            global_50: action.global_50
-        }
-
+      return {
+        ...state,
+        global_50: action.global_50,
+      };
+    case "SET_ITEM":
+      return {
+        ...state,
+        item: action.item,
+      };
+    case "SET_PLAYING":
+      return {
+        ...state,
+        playing: action.playing,
+      };
     default:
       return state;
   }

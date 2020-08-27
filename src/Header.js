@@ -11,7 +11,7 @@ function Header() {
       <div className="header__left">
         <SearchIcon />
 
-        <input type="text" placeholder="Search Artists, Songs, Playlists" />
+        <input type="text" placeholder="Search for Artists, Songs, or Podcasts " />
       </div>
       <div className="header__right">
         <Avatar alt={user?.display_name} src={user?.images[0]?.url} />

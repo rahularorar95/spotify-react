@@ -8,9 +8,46 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import "./Body.css";
 
 function Body({ spotify }) {
-  const [{ global_50 }] = useDataLayerValue();
+  const [{ global_50 },dispatch] = useDataLayerValue();
 
-  console.log(global_50);
+  const playPlaylist = (id) => {
+    spotify
+      .play({
+        context_uri: `spotify:playlist:37i9dQZEVXbMDoHDwVN2tF`,
+      })
+      .then((res) => {
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+          dispatch({
+            type: "SET_ITEM",
+            item: r.item,
+          });
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
+  };
+
+  const playSong = (id) => {
+    spotify
+      .play({
+        uris: [`spotify:track:${id}`],
+      })
+      .then((res) => {
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+          dispatch({
+            type: "SET_ITEM",
+            item: r.item,
+          });
+
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
+  };
   return (
     <div className="body">
       <Header spotify={spotify} />
@@ -25,22 +62,26 @@ function Body({ spotify }) {
         </div>
       </div>
 
-    <div className="body__background">
-      <div className="body__songs">
-        <div className="body__icons">
-          <PlayCircleFilledIcon className="body__shuffle" />
-          <FavoriteIcon fontSize="large" />
+      <div className="body__background">
+        <div className="body__songs">
+          <div className="body__icons">
+            <PlayCircleFilledIcon className="body__shuffle" onClick={playPlaylist} />
+            <FavoriteIcon fontSize="large" />
 
-          <MoreHorizIcon />
+            <MoreHorizIcon />
+          </div>
+
+          {/* List of songs */}
+
+          {global_50?.tracks.items.map((item) => {
+            return (
+              item.track.id && (
+                <SongRow track={item.track} playSong={playSong} />
+              )
+            );
+          })}
         </div>
-
-        {/* List of songs */}
-
-        {global_50?.tracks.items.map((item) => {
-          return item.track.id && <SongRow track={item.track} />;
-        })}
       </div>
-    </div>
     </div>
   );
 }
